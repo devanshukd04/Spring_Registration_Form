@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1 style="text-align:center">
+    Spring Boot Application Demo
+  </h1>
+<!--  <div th:if="$(session.message}"-->
+<!--       th:classappenda="${session.message}" class="alert alsert-success"-->
+<!--       role="alert">-->
+<!--      <p th:text="${session.message}"></p>-->
+<!--    <th:block th:texts="${#session.removeAttribute(''message')}"></th:block>-->
+<!--  </div>-->
+  <form th:action="@{/register}" th:object="${user}" method="post">
+    <label>Full Name</label>
+    <input type="text" th:field="*{name}">
+    <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" />
+    </br>
+    <label>Email</label>
+    <input type="text" th:field="*{email}">
+    <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
+    </br>
+    <label>Password</label>
+    <input type="text" th:field="*{passwd}">
+    <p th:if="${#fields.hasErrors('passwd')}" th:errorclass="error" th:errors="*{passwd}" />
+    <button type="submit">Register</button>
+  </form>
+
+</body>
+</html>
